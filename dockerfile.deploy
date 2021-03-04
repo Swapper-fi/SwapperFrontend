@@ -1,0 +1,13 @@
+FROM node:15 as builder
+WORKDIR /app
+
+COPY package.json .
+COPY tsconfig.json .
+RUN "yarn"
+COPY src/ ./src/
+COPY public/ ./public/
+RUN "yarn" "build"
+
+FROM amazon/aws-cli:latest
+COPY --from=builder ./app/build/ .
+CMD ["s3","cp",".","s3://swapper.fi","--recursive"]

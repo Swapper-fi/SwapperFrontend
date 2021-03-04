@@ -1,0 +1,6 @@
+version: '3'
+services: 
+  swapper-test:
+    container_name: swapper-test
+    build: "."
+    command: yarn test

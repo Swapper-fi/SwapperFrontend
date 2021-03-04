@@ -1,0 +1,11 @@
+version: '3'
+services: 
+  swapper-serve:
+    container_name: swapper-serve
+    build: 
+      context: "."
+      dockerfile: "dockerfile.deploy"
+    volumes: 
+      - "~/.aws:/root/.aws"
+    ports: 
+    - "3000:3000"
