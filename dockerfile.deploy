@@ -3,10 +3,10 @@ WORKDIR /app
 
 COPY package.json .
 COPY tsconfig.json .
-RUN "yarn"
+RUN yarn
 COPY src/ ./src/
 COPY public/ ./public/
-RUN "yarn" "build"
+RUN yarn build
 
 FROM amazon/aws-cli:latest
 COPY --from=builder ./app/build/ .

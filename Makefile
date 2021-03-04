@@ -1,6 +1,6 @@
 test:
 	# Run tests in the test container
-	docker-compose -f docker-compose.test.yaml up --exit-code-from swapper-test --force-recreate --build
+	docker-compose -f docker-compose.test.yaml up  --abort-on-container-exit --build
 serve:
 	# Build the frontend files in a docker container which maps to the host
 	docker-compose -f docker-compose.serve.yaml up --force-recreate --build
