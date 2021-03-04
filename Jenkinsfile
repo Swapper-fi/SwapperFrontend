@@ -9,8 +9,8 @@ pipeline {
       }
       stage('Deploy') { 
         steps {
-          when { tag "release-*" }
-          sh "make serve"
+          // when { tag "release-*" }
+          sh "make deploy"
         }
       }
     }
