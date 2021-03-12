@@ -7,7 +7,19 @@ pipeline {
           sh "make test"
         }
       }
-      stage('Deploy') { 
+      stage('Deploying Staging') { 
+        when {
+            branch "develop"
+        }
+        steps {
+          // when { tag "release-*" }
+          sh "make deploy-staging"
+        }
+      }
+      stage('Deploying Production') { 
+        when {
+            branch "main"
+        }
         steps {
           // when { tag "release-*" }
           sh "make deploy"

@@ -1,0 +1,18 @@
+version: '3'
+services: 
+  swapper-staging-www-deploy:
+    container_name: swapper-staging-www-deploy
+    build: 
+      context: "."
+      dockerfile: "dockerfile.deploy"
+    volumes: 
+      - "~/.aws:/root/.aws"
+    command: s3 cp . s3://www.staging.swapper.fi --recursive
+  swapper-staging-deploy:
+    container_name: swapper-staging-deploy
+    build: 
+      context: "."
+      dockerfile: "dockerfile.deploy"
+    volumes: 
+      - "~/.aws:/root/.aws"
+    command: s3 cp . s3://staging.swapper.fi --recursive
