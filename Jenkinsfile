@@ -14,18 +14,21 @@ pipeline {
             branch "dev"
           }
           steps {
-            echo 'Deploy Staging"'
-            sh 'deploy-staging'
+            withAWS(credentials: 'aws-credentials', region: 'ap-southeast-1') {
+              echo 'Deploy Staging"'
+              sh "make deploy-staging"
+            }
           }
         }
-
         stage('Deploy Production') {
           when {
             branch "main"
           }
           steps {
-            echo 'Deploy Production'
-            sh 'make deploy'
+            withAWS(credentials: 'aws-credentials', region: 'ap-southeast-1') {
+              echo 'Deploy Production'
+              sh 'make deploy'
+            }
           }
         }
 
