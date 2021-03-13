@@ -14,11 +14,13 @@ pipeline {
             branch "dev"
           }
           steps {
-            echo 'Deploy Staging"'
-            sh 'deploy-staging'
+            withCredentials([file(credentialsId: 'aws_credentials', variable: 'secrets')]) {
+              writeFile file: '~/.aws/credentials', text: readFile(secrets)
+              echo 'Deploy Staging"'
+              sh "make deploy-staging"
+            }
           }
         }
-
         stage('Deploy Production') {
           when {
             branch "main"
