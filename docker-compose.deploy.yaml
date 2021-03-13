@@ -5,14 +5,18 @@ services:
     build: 
       context: "."
       dockerfile: "dockerfile.deploy"
-    volumes: 
-      - "~/.aws:/root/.aws"
+    environment: 
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
     command: s3 cp . s3://www.swapper.fi --recursive
   swapper-prod-deploy:
     container_name: swapper-prod-deploy
     build: 
       context: "."
       dockerfile: "dockerfile.deploy"
-    volumes: 
-      - "~/.aws:/root/.aws"
+    environment: 
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
     command: s3 cp . s3://swapper.fi --recursive
