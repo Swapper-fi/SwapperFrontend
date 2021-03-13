@@ -8,24 +8,22 @@ pipeline {
     }
 
     stage('Deploy') {
-     
-      if (env.BRANCH_NAME == "dev") {                                          
+      parallel {
         stage('Deploy Staging') {
           steps {
-            echo 'Deploy Staging'
+            echo '"Building Staing Site"'
             sh 'deploy-staging'
           }
         }
-      } 
-      if (env.BRANCH_NAME == "main") {                                          
+
         stage('Deploy Production') {
           steps {
             echo 'Deploy Production'
             sh 'make deploy'
           }
         }
-      } 
-      
+
+      }
     }
 
   }
