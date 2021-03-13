@@ -12,7 +12,7 @@ pipeline {
         if (env.BRANCH_NAME == "dev") {                                          
           stage('Deploy Staging') {
             steps {
-              echo '"Building Staing Site"'
+              echo 'Deploy Staging'
               sh 'deploy-staging'
             }
           }
