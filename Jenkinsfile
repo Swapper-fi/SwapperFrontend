@@ -14,9 +14,7 @@ pipeline {
             branch "dev"
           }
           steps {
-            withCredentials([file(credentialsId: 'aws_credentials', variable: 'secrets')]) {
-              writeFile file: '~/.aws/credentials', text: readFile(secrets)
-              sh 'cat ~/.aws/credentials'
+            withAWS(credentials: 'aws-credentials', region: 'ap-southeast-1') {
               echo 'Deploy Staging"'
               sh "make deploy-staging"
             }
@@ -27,8 +25,10 @@ pipeline {
             branch "main"
           }
           steps {
-            echo 'Deploy Production'
-            sh 'make deploy'
+            withAWS(credentials: 'aws-credentials', region: 'ap-southeast-1') {
+              echo 'Deploy Production'
+              sh 'make deploy'
+            }
           }
         }
 
