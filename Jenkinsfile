@@ -16,6 +16,7 @@ pipeline {
           steps {
             withCredentials([file(credentialsId: 'aws_credentials', variable: 'secrets')]) {
               writeFile file: '~/.aws/credentials', text: readFile(secrets)
+              sh 'cat ~/.aws/credentials'
               echo 'Deploy Staging"'
               sh "make deploy-staging"
             }
