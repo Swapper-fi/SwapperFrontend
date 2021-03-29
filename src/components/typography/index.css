@@ -1,0 +1,115 @@
+.d1 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 96px;
+  line-height: 112px;
+  font-weight: 600;
+}
+
+.d2 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 72px;
+  line-height: 80px;
+  font-weight: 600;
+}
+
+.d3 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 600;
+}
+
+.h1 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 600;
+}
+
+.h2 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+}
+
+.h3 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 600;
+}
+
+.h4 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 500;
+}
+
+.h5 {
+  font-family: 'Poppins',sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.menu {
+  font-family: 'Inter',sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.title {
+  font-family: 'Inter',sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.captionLarge {
+  font-family: 'Inter',sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.captionSmall {
+  font-family: 'Inter',sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.bodyLarge {
+  font-family: 'Inter',sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.bodySmall {
+  font-family: 'Inter',sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.buttonLarge {
+  font-family: 'Inter',sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.buttonsmall {
+  font-family: 'Inter',sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.inverted {
+  color: #FFFFFF;
+}
