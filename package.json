@@ -18,9 +18,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "branch=$(git branch --show-current) && version=$(openssl rand -base64 6) && REACT_APP_BRANCH=$branch REACT_APP_VERSION=$version react-scripts start",
-    "build": "branch=$(git branch --show-current) && version=$(openssl rand -base64 6) && REACT_APP_BRANCH=$branch REACT_APP_VERSION=$version react-scripts build",
-    "test": "CI=true react-scripts test",
+    "start": "branch=$(git branch --show-current) && version=$(openssl rand -base64 6) && REACT_APP_BRANCH=$branch REACT_APP_VERSION=$version SKIP_PREFLIGHT_CHECK=true react-scripts start",
+    "build": "branch=$(git branch --show-current) && version=$(openssl rand -base64 6) && REACT_APP_BRANCH=$branch REACT_APP_VERSION=$version SKIP_PREFLIGHT_CHECK=true react-scripts build",
+    "test": "CI=true SKIP_PREFLIGHT_CHECK=true react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
