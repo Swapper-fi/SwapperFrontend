@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { colors } from '../colors';
 import { Typography } from '../components/typography';
 import './App.css';
 import { Exchange } from './exchange';
@@ -21,10 +22,12 @@ function App() {
     { link: "/invest", name: "Invest", screen: Invest },
     { link: "/transactions", name: "Trasactions", screen: Transactions },
   ]
+  let release = process.env.REACT_APP_BRANCH === 'main' ? 'Release' : 'Development'
+  let version = process.env.REACT_APP_VERSION
   return (
     <Router>
       <div className="App">
-        <div className="navBar">
+        <div style={{ background: colors.primary }} className="navBar">
           <ul>
             {routes.map((route) => {
               return (
@@ -38,6 +41,10 @@ function App() {
               )
             })}
           </ul>
+          <div className="versionBox">
+            <Typography type="captionLarge" text={`Release: ${release}`} />
+            <Typography type="captionSmall" text={`Version: ${version}`} />
+          </div>
         </div>
         <Switch>
           {routes.reverse().map((route) => {
