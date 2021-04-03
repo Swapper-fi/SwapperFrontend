@@ -29,9 +29,9 @@ function App() {
       <div className="App">
         <div style={{ background: colors.primary }} className="navBar">
           <ul>
-            {routes.map((route) => {
+            {routes.map((route, index) => {
               return (
-                <div>
+                <div key={index}>
                   <Link style={{ textDecoration: 'none' }} to={route.link}>
                     <div className="navBarListObject">
                       <Typography type="menu" text={route.name} />
@@ -47,9 +47,9 @@ function App() {
           </div>
         </div>
         <Switch>
-          {routes.reverse().map((route) => {
+          {routes.reverse().map((route, index) => {
             return (
-              <Route path={route.link}>
+              <Route path={route.link} key={index}>
                 {route.screen}
               </Route>
             )
