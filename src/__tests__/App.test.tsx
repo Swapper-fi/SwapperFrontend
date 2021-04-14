@@ -1,6 +1,7 @@
 import { shallow } from 'enzyme'
 import App from '../screens/App';
 
+test('Filler test', () => { })
 // test('Check if navigation bar exists', () => {
 //   const wrapper = shallow(<App />)
 //   const navbar = wrapper.find(".navBar")
