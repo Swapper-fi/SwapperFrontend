@@ -1,0 +1,21 @@
+.navBar {
+  flex-basis: 20vw;
+  margin-right: 2vw;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  border-right: 0.1pc solid white;
+  
+}
+
+.navBarListObject {
+  height: 10vh;
+  text-decoration: none;
+}
+
+.versionBox {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2vh;
+  padding-left: 2vh;
+}
