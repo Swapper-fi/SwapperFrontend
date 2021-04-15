@@ -1,0 +1,13 @@
+.menuItem {
+  width: 216px;
+  height:56px;
+  display: flex;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+
+.menuContent {
+  display: flex;
+}
+

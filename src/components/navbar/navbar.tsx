@@ -25,15 +25,13 @@ const NavBar: React.FC<NavBarProps> = props => {
 
   return (
     <div className="navBar">
-      <ul>
-        {routes.reverse().map((route, index) => {
-          return (
-            <div key={index}>
-              <Item selected={selectedRoute[route.name]} onClickHandler={onClickHandler} route={route} />
-            </div>
-          )
-        })}
-      </ul>
+      {routes.reverse().map((route, index) => {
+        return (
+          <div className="navBarListObject" key={index}>
+            <Item selected={selectedRoute[route.name]} onClickHandler={onClickHandler} route={route} />
+          </div>
+        )
+      })}
       <div className="versionBox">
         <Typography type="captionLarge" text={`Release: ${release}`} />
         <Typography type="captionSmall" text={`Version: ${version}`} />

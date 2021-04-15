@@ -19,11 +19,11 @@ export default {
 } as Meta;
 
 const routes: RouteType[] = [
-  { link: "/", name: "Overview", screen: Overview },
-  { link: "/Swap", name: "Swap", screen: Exchange },
-  { link: "/Pool", name: "Pool", screen: Pool },
-  { link: "/History", name: "History", screen: History },
-  { link: "/Settings", name: "Settings", screen: Settings },
+  // { link: "/", name: "Overview", screen: Exchange },
+  // { link: "/Swap", name: "Swap", screen: Exchange },
+  // { link: "/Pool", name: "Pool", screen: Pool },
+  // { link: "/History", name: "History", screen: History },
+  // { link: "/Settings", name: "Settings", screen: Settings },
 ]
 
 const Template: Story<NavBarProps> = (args) =>

@@ -11,7 +11,10 @@
 .navBarListObject {
   height: 10vh;
   text-decoration: none;
+  display:flex;
+  flex-direction: 'row';
 }
+
 
 .versionBox {
   display: flex;
