@@ -3,11 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { NavBar } from '../components/navbar';
 import { NavBarProps } from '../components/navbar/navbar';
 
+import { Overview } from '../screens/overview';
 import { Exchange } from '../screens/exchange';
-import { Farm } from '../screens/farm';
-import { Invest } from '../screens/invest';
-import { Portfolio } from '../screens/portfolio/portfolio';
-import { Transactions } from '../screens/transactions';
+import { Pool } from '../screens/pool';
+import { History } from '../screens/history';
+import { Settings } from '../screens/settings';
+import { RouteType } from '../types';
+
 export default {
   title: 'Components/NavBar',
   component: NavBar,
@@ -16,17 +18,13 @@ export default {
   },
 } as Meta;
 
-const routes: {
-  name: "Overview" | "Swap" | "Pool" | "History" | "Settings",
-  link: string,
-  screen: React.FC<any>
-}[] = [
-    { link: "/", name: "Overview", screen: Portfolio },
-    { link: "/Swap", name: "Swap", screen: Exchange },
-    { link: "/Pool", name: "Pool", screen: Farm },
-    { link: "/History", name: "History", screen: Invest },
-    { link: "/Settings", name: "Settings", screen: Transactions },
-  ]
+const routes: RouteType[] = [
+  { link: "/", name: "Overview", screen: Overview },
+  { link: "/Swap", name: "Swap", screen: Exchange },
+  { link: "/Pool", name: "Pool", screen: Pool },
+  { link: "/History", name: "History", screen: History },
+  { link: "/Settings", name: "Settings", screen: Settings },
+]
 
 const Template: Story<NavBarProps> = (args) =>
   <Router>

@@ -8,20 +8,20 @@ import {
 } from "react-router-dom";
 
 import { NavBar } from '../components/navbar';
+import { Overview } from './overview';
 import { Exchange } from './exchange';
-import { Farm } from './farm';
-import { Invest } from './invest';
-import { Portfolio } from './portfolio/portfolio';
-import { Transactions } from './transactions';
+import { Pool } from './pool';
+import { History } from './history';
+import { Settings } from './settings';
 
 import './App.css';
 function App() {
   const routes: RouteType[] = [
-    { link: "/", name: "Overview", screen: Portfolio },
+    { link: "/", name: "Overview", screen: Overview },
     { link: "/Swap", name: "Swap", screen: Exchange },
-    { link: "/Pool", name: "Pool", screen: Farm },
-    { link: "/History", name: "History", screen: Invest },
-    { link: "/Settings", name: "Settings", screen: Transactions },
+    { link: "/Pool", name: "Pool", screen: Pool },
+    { link: "/History", name: "History", screen: History },
+    { link: "/Settings", name: "Settings", screen: Settings },
   ]
   const defaultRouteSelection: RouteSelection = {
     Overview: false,
