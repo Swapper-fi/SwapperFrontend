@@ -1,32 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { RouteSelection, RouteType } from '../../types';
 import { Typography } from '../typography';
+import { Item } from './item';
 
 import "./navbar.css"
 export interface NavBarProps {
-  routes: {
-    name: string,
-    link: string,
-    screen: React.FC<any>
-  }[]
+  defaultRouteSelection: RouteSelection,
+  selectedRoute: RouteSelection,
+  setSelectedRoute: React.Dispatch<React.SetStateAction<RouteSelection>>,
+  routes: RouteType[]
 }
 
 const NavBar: React.FC<NavBarProps> = props => {
-  const { routes } = props;
+  const { defaultRouteSelection, selectedRoute, setSelectedRoute, routes } = props;
   let release = process.env.REACT_APP_BRANCH === 'main' ? 'Release' : 'Development'
   let version = process.env.REACT_APP_VERSION
+
+  const onClickHandler = (route: string) => {
+    setSelectedRoute({
+      ...defaultRouteSelection,
+      [route]: true,
+    })
+  }
 
   return (
     <div className="navBar">
       <ul>
-        {routes.map((route, index) => {
+        {routes.reverse().map((route, index) => {
           return (
             <div key={index}>
-              <Link style={{ textDecoration: 'none' }} to={route.link}>
-                <div className="navBarListObject">
-                  <Typography type="menu" text={route.name} />
-                </div>
-              </Link>
+              <Item selected={selectedRoute[route.name]} onClickHandler={onClickHandler} route={route} />
             </div>
           )
         })}

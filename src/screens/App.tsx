@@ -1,4 +1,5 @@
 import React from 'react';
+import { RouteSelection, RouteType } from '../types';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,17 +16,30 @@ import { Transactions } from './transactions';
 
 import './App.css';
 function App() {
-  const routes = [
-    { link: "/", name: "Portfolio", screen: Portfolio },
-    { link: "/exchange", name: "Exchange", screen: Exchange },
-    { link: "/farms", name: "Farms", screen: Farm },
-    { link: "/invest", name: "Invest", screen: Invest },
-    { link: "/transactions", name: "Trasactions", screen: Transactions },
+  const routes: RouteType[] = [
+    { link: "/", name: "Overview", screen: Portfolio },
+    { link: "/Swap", name: "Swap", screen: Exchange },
+    { link: "/Pool", name: "Pool", screen: Farm },
+    { link: "/History", name: "History", screen: Invest },
+    { link: "/Settings", name: "Settings", screen: Transactions },
   ]
+  const defaultRouteSelection: RouteSelection = {
+    Overview: false,
+    Swap: false,
+    Pool: false,
+    History: false,
+    Settings: false,
+  }
+  const [selectedRoute, setSelectedRoute] = React.useState(defaultRouteSelection)
+
   return (
     <Router>
       <div className="App">
-        <NavBar routes={routes} />
+        <NavBar
+          defaultRouteSelection={defaultRouteSelection}
+          selectedRoute={selectedRoute}
+          setSelectedRoute={setSelectedRoute}
+          routes={routes} />
         <Switch>
           {routes.reverse().map((route, index) => {
             return (
