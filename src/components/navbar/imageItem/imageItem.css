@@ -1,0 +1,19 @@
+.menuItem {
+  width: 216px;
+  height:56px;
+  padding-inline-start: 20px;
+  display: flex;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+
+.menuContent {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+  color: transparent;
+}
+

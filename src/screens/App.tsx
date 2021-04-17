@@ -1,51 +1,55 @@
 import React from 'react';
+import { AssetSelection, RouteSelection, RouteType } from '../types';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
-import { colors } from '../colors';
-import { Typography } from '../components/typography';
-import './App.css';
-import { Exchange } from './exchange';
-import { Farm } from './farm';
-import { Invest } from './invest';
-import { Portfolio } from './portfolio/portfolio';
-import { Transactions } from './transactions';
 
+import { NavBar } from '../components/navbar';
+import { Overview } from './overview';
+import { Exchange } from './exchange';
+import { Pool } from './pool';
+import { History } from './history';
+import { Settings } from './settings';
+
+import './App.css';
 function App() {
-  const routes = [
-    { link: "/", name: "Portfolio", screen: Portfolio },
-    { link: "/exchange", name: "Exchange", screen: Exchange },
-    { link: "/farms", name: "Farms", screen: Farm },
-    { link: "/invest", name: "Invest", screen: Invest },
-    { link: "/transactions", name: "Trasactions", screen: Transactions },
+  const routes: RouteType[] = [
+    { link: "/", name: "Overview", screen: Overview },
+    { link: "/Swap", name: "Swap", screen: Exchange },
+    { link: "/Pool", name: "Pool", screen: Pool },
+    { link: "/History", name: "History", screen: History },
+    { link: "/Settings", name: "Settings", screen: Settings },
   ]
-  let release = process.env.REACT_APP_BRANCH === 'main' ? 'Release' : 'Development'
-  let version = process.env.REACT_APP_VERSION
+
+  const defaultRouteSelection: RouteSelection = {
+    Overview: false,
+    Swap: false,
+    Pool: false,
+    History: false,
+    Settings: false,
+  }
+
+  //Defaults to eth
+  const defaultAssetSelection: AssetSelection = {
+    ETH: false,
+    BSC: false,
+    ALL: false,
+  }
+  const [selectedRoute, setSelectedRoute] = React.useState(defaultRouteSelection)
+  const [selectedAsset, setSelectedAsset] = React.useState(defaultAssetSelection)
   return (
     <Router>
       <div className="App">
-        <div style={{ background: colors.primary }} className="navBar">
-          <ul>
-            {routes.map((route, index) => {
-              return (
-                <div key={index}>
-                  <Link style={{ textDecoration: 'none' }} to={route.link}>
-                    <div className="navBarListObject">
-                      <Typography type="menu" text={route.name} />
-                    </div>
-                  </Link>
-                </div>
-              )
-            })}
-          </ul>
-          <div className="versionBox">
-            <Typography type="captionLarge" text={`Release: ${release}`} />
-            <Typography type="captionSmall" text={`Version: ${version}`} />
-          </div>
-        </div>
+        <NavBar
+          defaultRouteSelection={defaultRouteSelection}
+          selectedRoute={selectedRoute}
+          setSelectedRoute={setSelectedRoute}
+          defaultAssetSelection={defaultAssetSelection}
+          selectedAsset={selectedAsset}
+          setSelectedAsset={setSelectedAsset}
+          routes={routes} />
         <Switch>
           {routes.reverse().map((route, index) => {
             return (

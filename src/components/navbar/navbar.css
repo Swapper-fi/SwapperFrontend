@@ -1,0 +1,18 @@
+.navBar {
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  border-right: 0.1pc solid white;
+}
+
+.assetSelectionRow {
+  display: flex;
+  margin-left: 15px;
+}
+.versionBox {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2vh;
+  padding-left: 2vh;
+}
+
