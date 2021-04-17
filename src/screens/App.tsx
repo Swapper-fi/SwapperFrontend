@@ -1,5 +1,5 @@
 import React from 'react';
-import { AssetSelection, RouteSelection, RouteType } from '../types';
+import { Assets, AssetSelection, RouteSelection, RouteType } from '../types';
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,7 +31,11 @@ function App() {
     Settings: false,
   }
 
-  //Defaults to eth
+  const assets: Assets[] = [
+    "ETH",
+    "BSC",
+    "ALL"
+  ]
   const defaultAssetSelection: AssetSelection = {
     ETH: false,
     BSC: false,
@@ -49,6 +53,7 @@ function App() {
           defaultAssetSelection={defaultAssetSelection}
           selectedAsset={selectedAsset}
           setSelectedAsset={setSelectedAsset}
+          assets={assets}
           routes={routes} />
         <Switch>
           {routes.reverse().map((route, index) => {

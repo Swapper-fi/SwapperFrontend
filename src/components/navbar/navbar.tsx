@@ -13,6 +13,7 @@ export interface NavBarProps {
   defaultAssetSelection: AssetSelection
   selectedAsset: AssetSelection
   setSelectedAsset: React.Dispatch<React.SetStateAction<AssetSelection>>
+  assets: Assets[]
   routes: RouteType[]
 }
 
@@ -24,6 +25,7 @@ const NavBar: React.FC<NavBarProps> = props => {
     defaultAssetSelection,
     selectedAsset,
     setSelectedAsset,
+    assets,
     routes } = props;
   let release = process.env.REACT_APP_BRANCH === 'main' ? 'Release' : 'Development'
   let version = process.env.REACT_APP_VERSION
@@ -45,9 +47,11 @@ const NavBar: React.FC<NavBarProps> = props => {
       <ul style={{ paddingInlineStart: '20px', paddingInlineEnd: '20px' }}>
         <ProfileCard image={'someImage'} address="syahrul" value={"$123.39"} />
         <div className="assetSelectionRow">
-          <Item selected={selectedAsset["ETH"]} onClickHandler={onNativeAssetClickHandler} text={'ETH'} />
-          <Item selected={selectedAsset["BSC"]} onClickHandler={onNativeAssetClickHandler} text={'BSC'} />
-          <Item selected={selectedAsset["ALL"]} onClickHandler={onNativeAssetClickHandler} text={'ALL'} />
+          {assets.map((asset, index) => {
+            return (
+              <Item selected={selectedAsset[asset]} onClickHandler={onNativeAssetClickHandler} text={asset} />
+            )
+          })}
         </div>
         {routes.reverse().map((route, index) => {
           return (
