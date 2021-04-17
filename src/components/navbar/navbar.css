@@ -16,3 +16,12 @@
   padding-left: 2vh;
 }
 
+.themeSwitchBox {
+  padding-inline-start: 20px;
+}
+
+.brandingBox {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}

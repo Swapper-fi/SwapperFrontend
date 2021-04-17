@@ -3,9 +3,12 @@ import { Assets, AssetSelection, RouteSelection, RouteType } from '../../types';
 import { Typography } from '../typography';
 import { ImageItem } from './imageItem';
 import { Item } from './item';
-
-import "./navbar.css"
 import { ProfileCard } from './profileCard';
+
+
+import NavbarBranding from '../../assets/navbarBranding.svg'
+import MoonImage from '../../assets/moon.svg'
+import "./navbar.css"
 export interface NavBarProps {
   defaultRouteSelection: RouteSelection,
   selectedRoute: RouteSelection,
@@ -61,9 +64,18 @@ const NavBar: React.FC<NavBarProps> = props => {
           )
         })}
       </ul>
-      <div className="versionBox">
-        <Typography type="captionLarge" text={`Release: ${release}`} />
-        <Typography type="captionSmall" text={`Version: ${version}`} />
+
+      <div>
+        <div className="themeSwitchBox">
+          <img src={MoonImage} />
+        </div>
+        <div className="brandingBox">
+          <img src={NavbarBranding} />
+        </div>
+        <div className="versionBox">
+          <Typography type="captionLarge" text={`Release: ${release}`} />
+          <Typography type="captionSmall" text={`Version: ${version}`} />
+        </div>
       </div>
     </div>
   )
