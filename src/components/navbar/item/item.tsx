@@ -1,36 +1,55 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { colors } from '../../../colors';
+import { Assets, RouteType } from '../../../types';
 import { Icon } from '../../icon';
 import { Typography } from '../../typography'
 
 import "./item.css"
 export interface ItemProp {
   selected: boolean,
-  onClickHandler: (route: string) => void;
-  route: {
-    link: string,
-    name: string,
-    screen: React.FC<any>
-  }
+  text: Assets,
+  onClickHandler: (assets: Assets) => void;
 }
 
 const Item: React.FC<ItemProp> = (props) => {
-  const { selected, onClickHandler, route } = props;
-  const onLinkClick = () => {
-    onClickHandler(route.name)
+  const { selected, text, onClickHandler } = props;
+  const [hover, setHover] = React.useState(false)
+
+  const onClick = () => {
+    onClickHandler(text)
+    setHover(false)
+  }
+  const onMouseEnter = () => {
+    if (!selected) {
+      setHover(true)
+    }
+  }
+  const onMouseLeave = () => {
+    setHover(false)
   }
   return (
-    <Link style={{ textDecoration: 'none' }} onClick={onLinkClick} to={route.link}>
-      <div className={`menuItem`} style={{ background: selected ? colors.lightGrey : 'transparent' }}>
-        <div className="menuContent">
-          <Icon type="Home" />
-          <div style={{ display: 'flex', marginLeft: '10px', alignContent: 'center', alignItems: 'center', justifyContent: 'center' }}>
-            <Typography type="menu" text={`${route.name}`} />
-          </div>
+    <div
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`menuNoImageItem`}
+      style={{
+        background: selected ? colors.lightGrey : 'transparent'
+      }}>
+      <div className="menuContent">
+        <div
+          style={{
+            display: 'flex',
+            marginLeft: '10px',
+            alignContent: 'center',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+          <Typography textColor={selected || hover ? colors.primary : undefined} type="menu" text={text} />
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 

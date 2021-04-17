@@ -11,3 +11,11 @@ export type RouteSelection = {
   History: boolean;
   Settings: boolean;
 };
+
+export type AssetSelection = {
+  ETH: boolean;
+  BSC: boolean;
+  ALL: boolean;
+};
+
+export type Assets = "ETH" | "BSC" | "ALL";

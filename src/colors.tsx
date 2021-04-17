@@ -1,7 +1,7 @@
 export const colors = {
-  primary: "#355DFF",
+  primary: "#EF8C03",
   dark: "#1F2128",
-  lightGrey: "rgba(255, 255, 255, 0.1)",
+  lightGrey: "rgba(228, 228, 228, 0.1)",
   darkCard: "#242731",
   accentone: "#6C5DD3",
   accenttwo: "#3F8CFF",

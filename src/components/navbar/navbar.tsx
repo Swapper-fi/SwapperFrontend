@@ -1,6 +1,7 @@
 import React from 'react';
-import { RouteSelection, RouteType } from '../../types';
+import { Assets, AssetSelection, RouteSelection, RouteType } from '../../types';
 import { Typography } from '../typography';
+import { ImageItem } from './imageItem';
 import { Item } from './item';
 
 import "./navbar.css"
@@ -8,11 +9,21 @@ export interface NavBarProps {
   defaultRouteSelection: RouteSelection,
   selectedRoute: RouteSelection,
   setSelectedRoute: React.Dispatch<React.SetStateAction<RouteSelection>>,
+  defaultAssetSelection: AssetSelection
+  selectedAsset: AssetSelection
+  setSelectedAsset: React.Dispatch<React.SetStateAction<AssetSelection>>
   routes: RouteType[]
 }
 
 const NavBar: React.FC<NavBarProps> = props => {
-  const { defaultRouteSelection, selectedRoute, setSelectedRoute, routes } = props;
+  const {
+    defaultRouteSelection,
+    selectedRoute,
+    setSelectedRoute,
+    defaultAssetSelection,
+    selectedAsset,
+    setSelectedAsset,
+    routes } = props;
   let release = process.env.REACT_APP_BRANCH === 'main' ? 'Release' : 'Development'
   let version = process.env.REACT_APP_VERSION
 
@@ -22,16 +33,29 @@ const NavBar: React.FC<NavBarProps> = props => {
       [route]: true,
     })
   }
-
+  const onNativeAssetClickHandler = (asset: Assets) => {
+    setSelectedAsset({
+      ...defaultAssetSelection,
+      [asset]: true
+    })
+  }
   return (
     <div className="navBar">
-      {routes.reverse().map((route, index) => {
-        return (
-          <div className="navBarListObject" key={index}>
-            <Item selected={selectedRoute[route.name]} onClickHandler={onClickHandler} route={route} />
-          </div>
-        )
-      })}
+
+      <ul style={{ paddingInlineStart: '20px', paddingInlineEnd: '20px' }}>
+        <div className="assetSelectionRow">
+          <Item selected={selectedAsset["ETH"]} onClickHandler={onNativeAssetClickHandler} text={'ETH'} />
+          <Item selected={selectedAsset["BSC"]} onClickHandler={onNativeAssetClickHandler} text={'BSC'} />
+          <Item selected={selectedAsset["ALL"]} onClickHandler={onNativeAssetClickHandler} text={'ALL'} />
+        </div>
+        {routes.reverse().map((route, index) => {
+          return (
+            <div key={index}>
+              <ImageItem selected={selectedRoute[route.name]} onClickHandler={onClickHandler} route={route} />
+            </div>
+          )
+        })}
+      </ul>
       <div className="versionBox">
         <Typography type="captionLarge" text={`Release: ${release}`} />
         <Typography type="captionSmall" text={`Version: ${version}`} />

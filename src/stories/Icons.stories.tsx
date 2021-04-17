@@ -17,7 +17,7 @@ Home.args = {
 
 export const Activites = Template.bind({})
 Activites.args = {
-  type: "Activites"
+  type: "Activities"
 }
 
 export const Exchange = Template.bind({})

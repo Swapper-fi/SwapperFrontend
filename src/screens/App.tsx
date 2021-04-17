@@ -1,10 +1,9 @@
 import React from 'react';
-import { RouteSelection, RouteType } from '../types';
+import { AssetSelection, RouteSelection, RouteType } from '../types';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 import { NavBar } from '../components/navbar';
@@ -23,6 +22,7 @@ function App() {
     { link: "/History", name: "History", screen: History },
     { link: "/Settings", name: "Settings", screen: Settings },
   ]
+
   const defaultRouteSelection: RouteSelection = {
     Overview: false,
     Swap: false,
@@ -30,8 +30,15 @@ function App() {
     History: false,
     Settings: false,
   }
-  const [selectedRoute, setSelectedRoute] = React.useState(defaultRouteSelection)
 
+  //Defaults to eth
+  const defaultAssetSelection: AssetSelection = {
+    ETH: false,
+    BSC: false,
+    ALL: false,
+  }
+  const [selectedRoute, setSelectedRoute] = React.useState(defaultRouteSelection)
+  const [selectedAsset, setSelectedAsset] = React.useState(defaultAssetSelection)
   return (
     <Router>
       <div className="App">
@@ -39,6 +46,9 @@ function App() {
           defaultRouteSelection={defaultRouteSelection}
           selectedRoute={selectedRoute}
           setSelectedRoute={setSelectedRoute}
+          defaultAssetSelection={defaultAssetSelection}
+          selectedAsset={selectedAsset}
+          setSelectedAsset={setSelectedAsset}
           routes={routes} />
         <Switch>
           {routes.reverse().map((route, index) => {

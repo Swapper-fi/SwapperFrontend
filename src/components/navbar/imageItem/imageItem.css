@@ -1,13 +1,12 @@
-.menuNoImageItem {
-  width: 49px;
-  height: 30px;
+.menuItem {
+  width: 216px;
+  height:56px;
+  padding-inline-start: 20px;
   display: flex;
   border-style: solid;
   border-width: 1px;
-  border-color: transparent;
   border-radius: 10px;
   margin-bottom: 3vh;
-  margin-right: 4px;
 }
 
 .menuContent {
