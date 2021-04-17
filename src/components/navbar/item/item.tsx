@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { colors } from '../../../colors';
-import { Assets, RouteType } from '../../../types';
-import { Icon } from '../../icon';
+import { Assets } from '../../../types';
 import { Typography } from '../../typography'
 
 import "./item.css"

@@ -1,0 +1,14 @@
+.profileCard {
+  display: flex;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.profileImage {
+  margin-right: 10px;
+}
+
+.profileMetadata {
+  display: flex;
+  flex-direction: column;
+}

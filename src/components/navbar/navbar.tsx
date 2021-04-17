@@ -5,6 +5,7 @@ import { ImageItem } from './imageItem';
 import { Item } from './item';
 
 import "./navbar.css"
+import { ProfileCard } from './profileCard';
 export interface NavBarProps {
   defaultRouteSelection: RouteSelection,
   selectedRoute: RouteSelection,
@@ -41,8 +42,8 @@ const NavBar: React.FC<NavBarProps> = props => {
   }
   return (
     <div className="navBar">
-
       <ul style={{ paddingInlineStart: '20px', paddingInlineEnd: '20px' }}>
+        <ProfileCard image={'someImage'} address="syahrul" value={"$123.39"} />
         <div className="assetSelectionRow">
           <Item selected={selectedAsset["ETH"]} onClickHandler={onNativeAssetClickHandler} text={'ETH'} />
           <Item selected={selectedAsset["BSC"]} onClickHandler={onNativeAssetClickHandler} text={'BSC'} />
