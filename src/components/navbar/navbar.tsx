@@ -1,18 +1,24 @@
 import React from 'react';
-import { Assets, AssetSelection, RouteSelection, RouteType } from '../../types';
+import Switch from '@material-ui/core/Switch';
+import { Assets, AssetSelection, RouteSelection, RouteType, Themes } from '../../types';
 import { Typography } from '../typography';
 import { ImageItem } from './imageItem';
 import { Item } from './item';
-
-import "./navbar.css"
 import { ProfileCard } from './profileCard';
+
+import NavbarBranding from '../../assets/navbarBranding.svg'
+import MoonImage from '../../assets/moon.svg'
+import "./navbar.css"
 export interface NavBarProps {
-  defaultRouteSelection: RouteSelection,
-  selectedRoute: RouteSelection,
-  setSelectedRoute: React.Dispatch<React.SetStateAction<RouteSelection>>,
+  defaultRouteSelection: RouteSelection
+  selectedRoute: RouteSelection
+  setSelectedRoute: React.Dispatch<React.SetStateAction<RouteSelection>>
   defaultAssetSelection: AssetSelection
   selectedAsset: AssetSelection
   setSelectedAsset: React.Dispatch<React.SetStateAction<AssetSelection>>
+  selectedTheme: Themes
+  setSelectedTheme: React.Dispatch<React.SetStateAction<Themes>>
+  assets: Assets[]
   routes: RouteType[]
 }
 
@@ -24,6 +30,9 @@ const NavBar: React.FC<NavBarProps> = props => {
     defaultAssetSelection,
     selectedAsset,
     setSelectedAsset,
+    selectedTheme,
+    setSelectedTheme,
+    assets,
     routes } = props;
   let release = process.env.REACT_APP_BRANCH === 'main' ? 'Release' : 'Development'
   let version = process.env.REACT_APP_VERSION
@@ -40,14 +49,22 @@ const NavBar: React.FC<NavBarProps> = props => {
       [asset]: true
     })
   }
+  const onHandleChangeTheme = () => {
+    //Flip the selected theme
+    setSelectedTheme({
+      isDark: !selectedTheme.isDark
+    })
+  }
   return (
     <div className="navBar">
       <ul style={{ paddingInlineStart: '20px', paddingInlineEnd: '20px' }}>
         <ProfileCard image={'someImage'} address="syahrul" value={"$123.39"} />
         <div className="assetSelectionRow">
-          <Item selected={selectedAsset["ETH"]} onClickHandler={onNativeAssetClickHandler} text={'ETH'} />
-          <Item selected={selectedAsset["BSC"]} onClickHandler={onNativeAssetClickHandler} text={'BSC'} />
-          <Item selected={selectedAsset["ALL"]} onClickHandler={onNativeAssetClickHandler} text={'ALL'} />
+          {assets.map((asset, index) => {
+            return (
+              <Item selected={selectedAsset[asset]} onClickHandler={onNativeAssetClickHandler} text={asset} />
+            )
+          })}
         </div>
         {routes.reverse().map((route, index) => {
           return (
@@ -57,9 +74,23 @@ const NavBar: React.FC<NavBarProps> = props => {
           )
         })}
       </ul>
-      <div className="versionBox">
-        <Typography type="captionLarge" text={`Release: ${release}`} />
-        <Typography type="captionSmall" text={`Version: ${version}`} />
+
+      <div>
+        <div className="themeSwitchBox">
+          <img src={MoonImage} />
+          <Switch
+            checked={selectedTheme.isDark}
+            onChange={onHandleChangeTheme}
+            color="primary"
+          />
+        </div>
+        <div className="brandingBox">
+          <img src={NavbarBranding} />
+        </div>
+        <div className="versionBox">
+          <Typography type="captionLarge" text={`Release: ${release}`} />
+          <Typography type="captionSmall" text={`Version: ${version}`} />
+        </div>
       </div>
     </div>
   )
