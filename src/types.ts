@@ -19,3 +19,7 @@ export type AssetSelection = {
 };
 
 export type Assets = "ETH" | "BSC" | "ALL";
+
+export type Themes = {
+  isDark: boolean;
+};

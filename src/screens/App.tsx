@@ -1,5 +1,5 @@
 import React from 'react';
-import { Assets, AssetSelection, RouteSelection, RouteType } from '../types';
+import { Assets, AssetSelection, RouteSelection, RouteType, Themes } from '../types';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +15,7 @@ import { Settings } from './settings';
 
 import './App.css';
 function App() {
+  //Routes registering and types
   const routes: RouteType[] = [
     { link: "/", name: "Overview", screen: Overview },
     { link: "/Swap", name: "Swap", screen: Exchange },
@@ -22,7 +23,6 @@ function App() {
     { link: "/History", name: "History", screen: History },
     { link: "/Settings", name: "Settings", screen: Settings },
   ]
-
   const defaultRouteSelection: RouteSelection = {
     Overview: false,
     Swap: false,
@@ -31,6 +31,7 @@ function App() {
     Settings: false,
   }
 
+  //Asset types
   const assets: Assets[] = [
     "ETH",
     "BSC",
@@ -41,8 +42,15 @@ function App() {
     BSC: false,
     ALL: false,
   }
+
+  //Dark mode default
+  const defaultTheme: Themes = {
+    isDark: true,
+  }
+
   const [selectedRoute, setSelectedRoute] = React.useState(defaultRouteSelection)
   const [selectedAsset, setSelectedAsset] = React.useState(defaultAssetSelection)
+  const [selectedTheme, setSelectedTheme] = React.useState(defaultTheme)
   return (
     <Router>
       <div className="App">
@@ -53,6 +61,8 @@ function App() {
           defaultAssetSelection={defaultAssetSelection}
           selectedAsset={selectedAsset}
           setSelectedAsset={setSelectedAsset}
+          selectedTheme={selectedTheme}
+          setSelectedTheme={setSelectedTheme}
           assets={assets}
           routes={routes} />
         <Switch>
