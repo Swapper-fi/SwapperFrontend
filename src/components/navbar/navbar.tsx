@@ -1,10 +1,18 @@
 import React from 'react';
 import Switch from '@material-ui/core/Switch';
+
+
 import { Assets, AssetSelection, RouteSelection, RouteType, Themes } from '../../types';
 import { Typography } from '../typography';
 import { ImageItem } from './imageItem';
 import { Item } from './item';
 import { ProfileCard } from './profileCard';
+
+
+//Redux
+import { useAppSelector, useAppDispatch } from '../../redux/hooks'
+import { toggleTheme } from '../../redux/theme'
+import { initialWalletState, setSelectedAsset } from '../../redux/wallets'
 
 import NavbarBranding from '../../assets/navbarBranding.svg'
 import MoonImage from '../../assets/moon.svg'
@@ -13,11 +21,6 @@ export interface NavBarProps {
   defaultRouteSelection: RouteSelection
   selectedRoute: RouteSelection
   setSelectedRoute: React.Dispatch<React.SetStateAction<RouteSelection>>
-  defaultAssetSelection: AssetSelection
-  selectedAsset: AssetSelection
-  setSelectedAsset: React.Dispatch<React.SetStateAction<AssetSelection>>
-  selectedTheme: Themes
-  setSelectedTheme: React.Dispatch<React.SetStateAction<Themes>>
   assets: Assets[]
   routes: RouteType[]
 }
@@ -27,13 +30,14 @@ const NavBar: React.FC<NavBarProps> = props => {
     defaultRouteSelection,
     selectedRoute,
     setSelectedRoute,
-    defaultAssetSelection,
-    selectedAsset,
-    setSelectedAsset,
-    selectedTheme,
-    setSelectedTheme,
     assets,
     routes } = props;
+
+  //Get state from redux
+  const assetSelection = useAppSelector((state) => state.wallet.assetSelection)
+  const isDark = useAppSelector((state) => state.theme.isDark)
+  const dispatch = useAppDispatch()
+
   let release = process.env.REACT_APP_BRANCH === 'main' ? 'Release' : 'Development'
   let version = process.env.REACT_APP_VERSION
 
@@ -44,17 +48,16 @@ const NavBar: React.FC<NavBarProps> = props => {
     })
   }
   const onNativeAssetClickHandler = (asset: Assets) => {
-    setSelectedAsset({
-      ...defaultAssetSelection,
+    dispatch(setSelectedAsset({
+      ...initialWalletState.assetSelection,
       [asset]: true
-    })
+    }))
   }
+
   const onHandleChangeTheme = () => {
-    //Flip the selected theme
-    setSelectedTheme({
-      isDark: !selectedTheme.isDark
-    })
+    dispatch(toggleTheme(!isDark))
   }
+
   return (
     <div className="navBar">
       <ul style={{ paddingInlineStart: '20px', paddingInlineEnd: '20px' }}>
@@ -62,7 +65,7 @@ const NavBar: React.FC<NavBarProps> = props => {
         <div className="assetSelectionRow">
           {assets.map((asset, index) => {
             return (
-              <Item selected={selectedAsset[asset]} onClickHandler={onNativeAssetClickHandler} text={asset} />
+              <Item selected={assetSelection[asset]} onClickHandler={onNativeAssetClickHandler} text={asset} />
             )
           })}
         </div>
@@ -79,7 +82,7 @@ const NavBar: React.FC<NavBarProps> = props => {
         <div className="themeSwitchBox">
           <img src={MoonImage} />
           <Switch
-            checked={selectedTheme.isDark}
+            checked={isDark}
             onChange={onHandleChangeTheme}
             color="primary"
           />
