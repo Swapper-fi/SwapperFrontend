@@ -1,3 +1,18 @@
 .walletListItem {
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+
+}
+
+.walletTextData {
+  display: flex;
+  flex-direction: column;
+}
+
+.walletTick {
+  align-self: center;
 }

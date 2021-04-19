@@ -6,9 +6,10 @@ import Activities from '../../assets/activities.svg';
 import Exchange from '../../assets/exchange.svg';
 import Markets from '../../assets/markets.svg';
 import Notifications from '../../assets/notifications.svg'
-import Promotions from '../../assets/promotions.svg'
-import Settings from '../../assets/settings.svg'
-import Wallets from '../../assets/wallets.svg'
+import Promotions from '../../assets/promotions.svg';
+import Settings from '../../assets/settings.svg';
+import Wallets from '../../assets/wallets.svg';
+import Tick from '../../assets/tick.svg';
 
 //SelectedIcons
 import HomeSelected from '../../assets/home-selected.svg';
@@ -16,9 +17,10 @@ import ActivitiesSelected from '../../assets/activities-selected.svg';
 import ExchangeSelected from '../../assets/exchange-selected.svg';
 import MarketsSelected from '../../assets/markets-selected.svg';
 import NotificationsSelected from '../../assets/notifications-selected.svg'
-import PromotionsSelected from '../../assets/promotions-selected.svg'
-import SettingsSelected from '../../assets/settings-selected.svg'
-import WalletsSelected from '../../assets/wallets-selected.svg'
+import PromotionsSelected from '../../assets/promotions-selected.svg';
+import SettingsSelected from '../../assets/settings-selected.svg';
+import WalletsSelected from '../../assets/wallets-selected.svg';
+import TickSelected from '../../assets/tick-selected.svg';
 
 //HoverIcons
 import HomeHover from '../../assets/home-hover.svg';
@@ -56,6 +58,8 @@ export interface IconProps {
   | "Wallets"
   | "Wallets-Selected"
   | "Wallets-Hover"
+  | "Tick"
+  | "TickSelected"
 }
 
 const Icon: React.FC<IconProps> = (props) => {
@@ -133,6 +137,12 @@ const Icon: React.FC<IconProps> = (props) => {
       break;
     case "Wallets-Hover":
       image = WalletsHover;
+      break;
+    case "Tick":
+      image = Tick;
+      break;
+    case "TickSelected":
+      image = TickSelected;
       break;
     default:
       image = Home;

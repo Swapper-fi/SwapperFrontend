@@ -1,4 +1,6 @@
 .walletSelection {
-  height: 50px;
+  width: 343px;
   border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

@@ -69,7 +69,7 @@ const NavBar: React.FC<NavBarProps> = props => {
             )
           })}
         </div>
-        {routes.reverse().map((route, index) => {
+        {routes.map((route, index) => {
           return (
             <div key={index}>
               <ImageItem selected={selectedRoute[route.name]} onClickHandler={onClickHandler} route={route} />
