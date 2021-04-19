@@ -5,15 +5,12 @@ import { Typography } from '../../typography';
 
 import ProfilePicture from '../../../assets/profile.svg'
 import "./walletListItem.css"
+import { WalletInfo } from '../../../types';
 
 export interface WalletListItemProps {
-  wallet: {
-    alias: String
-    address: String;
-    value: String;
-    selected?: boolean;
-  }
+  wallet: WalletInfo
 }
+
 const WalletListItem: React.FC<WalletListItemProps> = (props) => {
   const { alias, address, value, selected } = props.wallet;
   const [hover, setHover] = React.useState(false)

@@ -1,5 +1,6 @@
 import React from 'react';
 import { colors } from '../../colors';
+import { WalletInfo } from '../../types';
 import { Typography } from '../typography';
 import { WalletListItem } from './walletListItem/walletListItem';
 
@@ -9,7 +10,7 @@ export interface WalletSelectionProps {
 }
 
 const WalletSelection: React.FC<WalletSelectionProps> = (props) => {
-  const wallets = [
+  const wallets: WalletInfo[] = [
     {
       alias: "syahrul.eth",
       address: "0x123",

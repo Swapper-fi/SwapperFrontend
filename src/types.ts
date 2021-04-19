@@ -23,3 +23,10 @@ export type Assets = "ETH" | "BSC" | "ALL";
 export type Themes = {
   isDark: boolean;
 };
+
+export type WalletInfo = {
+  alias: string;
+  address: string;
+  value: string;
+  selected: boolean;
+};
