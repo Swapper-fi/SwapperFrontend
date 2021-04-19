@@ -8,6 +8,15 @@
 
 }
 
+.walletLeftComponent {
+  display: flex;
+}
+
+.walletProfilePic {
+  margin-right: 10px;
+  align-self: center;
+}
+
 .walletTextData {
   display: flex;
   flex-direction: column;

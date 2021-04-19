@@ -3,6 +3,7 @@ import { colors } from '../../../colors';
 import { Icon } from '../../icon';
 import { Typography } from '../../typography';
 
+import ProfilePicture from '../../../assets/profile.svg'
 import "./walletListItem.css"
 
 export interface WalletListItemProps {
@@ -36,14 +37,18 @@ const WalletListItem: React.FC<WalletListItemProps> = (props) => {
       onMouseLeave={onMouseLeave}
       onClick={onClick}
       className={`walletListItem`}
-      style={{ background: selected ? colors.lightGrey : 'transparent', paddingBottom: '10px' }}>
-      <div className={`walletTextData`}>
-        <Typography type="title" text={alias} />
-        <Typography textColor={"#808191"} type="bodySmall" text={address} />
-        <Typography textColor={"#808191"} type="bodySmall" text={value} />
+      style={{ background: selected ? colors.lightGrey : 'transparent', paddingTop: '10px', paddingBottom: '10px' }}>
+      <div className={`walletLeftComponent`}>
+        <div className={`walletProfilePic`}>
+          <img src={ProfilePicture} />
+        </div>
+        <div className={`walletTextData`}>
+          <Typography type="title" text={alias} />
+          <Typography textColor={"#808191"} type="bodySmall" text={address} />
+          <Typography textColor={"#808191"} type="bodySmall" text={value} />
+        </div>
       </div>
-      <div
-        className={`walletTick`}>
+      <div className={`walletTick`}>
         <Icon type={hover || selected ? "TickSelected" : "Tick"} />
       </div>
     </div>
