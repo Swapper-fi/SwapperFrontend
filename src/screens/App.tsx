@@ -37,20 +37,8 @@ function App() {
     "BSC",
     "ALL"
   ]
-  const defaultAssetSelection: AssetSelection = {
-    ETH: false,
-    BSC: false,
-    ALL: false,
-  }
-
-  //Dark mode default
-  const defaultTheme: Themes = {
-    isDark: true,
-  }
 
   const [selectedRoute, setSelectedRoute] = React.useState(defaultRouteSelection)
-  const [selectedAsset, setSelectedAsset] = React.useState(defaultAssetSelection)
-  const [selectedTheme, setSelectedTheme] = React.useState(defaultTheme)
   return (
     <Router>
       <div className="App">
@@ -58,11 +46,6 @@ function App() {
           defaultRouteSelection={defaultRouteSelection}
           selectedRoute={selectedRoute}
           setSelectedRoute={setSelectedRoute}
-          defaultAssetSelection={defaultAssetSelection}
-          selectedAsset={selectedAsset}
-          setSelectedAsset={setSelectedAsset}
-          selectedTheme={selectedTheme}
-          setSelectedTheme={setSelectedTheme}
           assets={assets}
           routes={routes} />
         <Switch>
